@@ -3,48 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moninechan <moninechan@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mochan <mochan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:40:20 by moninechan        #+#    #+#             */
-/*   Updated: 2023/03/21 08:13:35 by moninechan       ###   ########.fr       */
+/*   Updated: 2023/03/21 15:25:45 by mochan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
 
-const int Fixed::_fractionalBits = 8;
-
 Fixed::Fixed()
 	: _fixedPointNumberValue(0)
 {
-    std::cout << "Default constructor called\n";
+    std::cout << GREEN << "Default constructor called" << D << "\n";
+}
+
+Fixed::Fixed(const Fixed& src)
+{
+	std::cout << YELL << "Copy constructor called" << D << "\n";
+	*this = src;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called\n";
+	std::cout << RED << "Destructor called" << D << "\n";
 }
 
-Fixed::Fixed(const Fixed& other)
+Fixed&	Fixed::operator=(const Fixed& src)
 {
-	std::cout << "Default copy constructor called (shallow copy)\n";
-	this->_fixedPointNumberValue = other.getRawBits();
-}
-
-Fixed&	Fixed::operator=(const Fixed& rhs)
-{
-	std::cout << "Copy assignment operator called\n";
-
+	std::cout << BLU << "Copy assignment operator called" << D << "\n";
+	this->setRawBits(src.getRawBits());
+	return (*this);
 }
 
 int		Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called\n";
+	std::cout << CY << "getRawBits member function called" << D << "\n";
 	return (this->_fixedPointNumberValue);
 }
 
 void	Fixed::setRawBits( int const raw )
 {
-	std::cout << "setRawBits member function called\n";
-	_fractionalBit = raw;
+	_fixedPointNumberValue = raw;
 }
