@@ -6,7 +6,7 @@
 /*   By: mochan <mochan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:40:20 by moninechan        #+#    #+#             */
-/*   Updated: 2023/03/25 22:03:35 by mochan           ###   ########.fr       */
+/*   Updated: 2023/03/25 23:58:19 by mochan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,75 +43,6 @@ Fixed::~Fixed()
 	std::cout << RED << "Destructor called" << D << "\n";
 }
 
-//====OPERATOR OVERLOADS==========================================================================
-Fixed&	Fixed::operator=(const Fixed& src)
-{
-	std::cout << BLU << "Copy assignment operator called" << D << "\n";
-	this->_fixedPointNumberValue = src._fixedPointNumberValue ;
-	return (*this);
-}
-
-bool	Fixed::operator>(const Fixed& src) const
-{
-	if (this->_fixedPointNumberValue > src.getRawBits())
-		return (true);
-	else
-		return (false);
-}
-
-bool	Fixed::operator<(const Fixed& src) const
-{
-	if (this->_fixedPointNumberValue < src.getRawBits())
-		return (true);
-	else
-		return (false);
-}
-
-bool	Fixed::operator>=(Fixed const & src) const
-{
-	if (this->_fixedPointNumberValue >= src.getRawBits())
-		return (true);
-	else
-		return (false);
-}
-
-bool	Fixed::operator<=(Fixed const & src) const
-{
-	if (this->_fixedPointNumberValue <= src.getRawBits())
-		return (true);
-	else
-		return (false);
-}
-
-bool	Fixed::operator==(Fixed const & src) const
-{
-	if (this->_fixedPointNumberValue == src.getRawBits())
-		return (true);
-	else
-		return (false);
-}
-
-bool	Fixed::operator!=(Fixed const & src) const
-{
-	if (this->_fixedPointNumberValue != src.getRawBits())
-		return (true);
-	else
-		return (false);
-}
-
-// Fixed Fixed::operator+(Fixed const & src) const
-// {
-// 	Fixed	res;
-// 	res.setRawBits(this->getRawBits() + src.getRawBits());
-// 	return (res);
-// }
-
-std::ostream& operator<<( std::ostream& outputStream, const Fixed& number )
-{
-	outputStream << number.toFloat();
-	return (outputStream);
-}
-
 
 //==== GETTER / SETTER ===========================================================================
 int		Fixed::getRawBits( void ) const
@@ -125,6 +56,154 @@ void	Fixed::setRawBits( int const raw )
 	_fixedPointNumberValue = raw;
 }
 
+
+//====OPERATOR OVERLOADS==========================================================================
+Fixed&	Fixed::operator=(const Fixed& src)
+{
+	std::cout << BLU << "Copy assignment operator called" << D << "\n";
+	this->_fixedPointNumberValue = src._fixedPointNumberValue ;
+	return (*this);
+}
+
+bool	Fixed::operator>(const Fixed& src)
+{
+	if (this->_fixedPointNumberValue > src.getRawBits())
+		return (true);
+	else
+		return (false);
+}
+
+bool	Fixed::operator<(const Fixed& src)
+{
+	if (this->_fixedPointNumberValue < src.getRawBits())
+		return (true);
+	else
+		return (false);
+}
+
+bool	Fixed::operator>=(Fixed const & src)
+{
+	if (this->_fixedPointNumberValue >= src.getRawBits())
+		return (true);
+	else
+		return (false);
+}
+
+bool	Fixed::operator<=(Fixed const & src)
+{
+	if (this->_fixedPointNumberValue <= src.getRawBits())
+		return (true);
+	else
+		return (false);
+}
+
+bool	Fixed::operator==(Fixed const & src)
+{
+	if (this->_fixedPointNumberValue == src.getRawBits())
+		return (true);
+	else
+		return (false);
+}
+
+bool	Fixed::operator!=(Fixed const & src)
+{
+	if (this->_fixedPointNumberValue != src.getRawBits())
+		return (true);
+	else
+		return (false);
+}
+
+Fixed	Fixed::operator+(Fixed const & src)
+{
+	Fixed res;
+	res.setRawBits(this->getRawBits() + src.getRawBits());
+	return (res);
+}
+
+Fixed	Fixed::operator-(Fixed const & src)
+{
+	Fixed res;
+	res.setRawBits(this->getRawBits() - src.getRawBits());
+	return (res);
+}
+
+Fixed	Fixed::operator*(Fixed const & src)
+{
+	Fixed res(this->toFloat() * src.toFloat());
+	return (res);
+}
+
+Fixed	Fixed::operator/(Fixed const & src)
+{
+	Fixed res(this->toFloat() / src.toFloat());
+	return (res);
+}
+
+Fixed & Fixed::operator++(void)
+{
+	this->_fixedPointNumberValue++;
+	return (*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed ret(*this);
+
+	this->_fixedPointNumberValue++;
+	return (ret);
+}
+
+Fixed & Fixed::operator--(void)
+{
+	this->_fixedPointNumberValue--;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed ret(*this);
+
+	this->_fixedPointNumberValue--;
+	return (ret);
+}
+
+Fixed & Fixed::min(Fixed & ref1, Fixed & ref2) {
+
+	if (ref1.getRawBits() > ref2.getRawBits())
+		return (ref2);
+	else
+		return (ref1);
+}
+
+const Fixed & Fixed::min(Fixed const & ref1, Fixed const & ref2)
+{
+	if (ref1.getRawBits() > ref2.getRawBits())
+		return (ref2);
+	else
+		return (ref1);
+}
+
+Fixed & Fixed::max(Fixed & ref1, Fixed & ref2)
+{
+	if (ref1.getRawBits() < ref2.getRawBits())
+		return (ref2);
+	else
+		return (ref1);
+}
+
+const Fixed & Fixed::max(Fixed const & ref1, Fixed const & ref2)
+{
+	if (ref1.getRawBits() < ref2.getRawBits())
+		return (ref2);
+	else
+		return (ref1);
+}
+
+std::ostream& operator<<( std::ostream& outputStream, const Fixed& number )
+{
+	outputStream << number.toFloat();
+	return (outputStream);
+}
 
 //==== MEMBER FUNCTIONS ===========================================================================
 float	Fixed::toFloat( void ) const

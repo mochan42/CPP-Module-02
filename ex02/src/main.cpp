@@ -6,7 +6,7 @@
 /*   By: mochan <mochan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:40:28 by moninechan        #+#    #+#             */
-/*   Updated: 2023/03/25 22:03:21 by mochan           ###   ########.fr       */
+/*   Updated: 2023/03/25 23:58:42 by mochan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,24 @@ int main()
 	std::cout << "a != b: " << (a != b) << " (Expected: 1)\n";
 	std::cout << "a != c: " << (a != c) << " (Expected: 0)\n";
 	std::cout << "\n======= Arithmetic operators =======\n";
-	// std::cout << "a + b: " << (a + b) << " (Expected: 63.19)\n";
-	
+	std::cout << "a + b: " << (a + b) << " (Expected: 63.19)\n";
+	std::cout << "a - b: " << (a - b) << " (Expected: 20.81)\n";
+	std::cout << "a * b: " << (a * b) << " (Expected: 889.98)\n";
+	std::cout << "a ""/"" b: " << (a / b) << " (Expected: 1.98)\n";
+	std::cout << "\n======= Increment / Decrement =======\n";
+	std::cout << "a: " << a << "\n";
+	std::cout << "result a++: " << (a++) << "\n";
+	std::cout << "a: " << a << "\n";
+	std::cout << "result ++a: " << (++a) << "\n";
+	std::cout << "a: " << a << "\n";
+	std::cout << "result a--: " << (a--) << "\n";
+	std::cout << "a: " << a << "\n";
+	std::cout << "result --a: " << (--a) << "\n";
+	std::cout << "a: " << a << "\n\n";
+	std::cout << "\n======= Min / Max =======\n";
+	std::cout << "min(a,b): " << (Fixed::min(a,b)) << "\n";
+	std::cout << "max(a,b): " << (Fixed::max(a,b)) << "\n";
+
 	// Fixed a;
 	// Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 

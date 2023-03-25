@@ -6,7 +6,7 @@
 /*   By: mochan <mochan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:40:25 by moninechan        #+#    #+#             */
-/*   Updated: 2023/03/25 22:03:41 by mochan           ###   ########.fr       */
+/*   Updated: 2023/03/25 23:54:14 by mochan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,24 @@ class	Fixed
 
 		// OPERATOR OVERLOADS
 		Fixed&	operator=(const Fixed& src); // Copy assignment operator called
-		bool	operator>(const Fixed& src) const;
-		bool	operator<(const Fixed& src) const;
-		bool	operator>=(Fixed const & src) const;
-		bool	operator<=(Fixed const & src) const;
-		bool	operator==(Fixed const & src) const;
-		bool	operator!=(Fixed const & src) const;
-		// Fixed	operator+(Fixed const & src) const:
+		bool	operator>(const Fixed& src);
+		bool	operator<(const Fixed& src);
+		bool	operator>=(Fixed const & src);
+		bool	operator<=(Fixed const & src);
+		bool	operator==(Fixed const & src);
+		bool	operator!=(Fixed const & src);
+		Fixed	operator+(Fixed const & src);
+		Fixed	operator-(Fixed const & src);
+		Fixed	operator*(Fixed const & src);
+		Fixed	operator/(Fixed const & src);
+		Fixed&	operator++(void);
+		Fixed	operator++(int);
+		Fixed&	operator--(void);
+		Fixed	operator--(int);
+		static Fixed &	min(Fixed & ref1, Fixed & ref2);
+		static const Fixed &	min(Fixed const & ref1, Fixed const & ref2);
+		static Fixed &	max(Fixed & ref1, Fixed & ref2);
+		static const Fixed &	max(Fixed const & ref1, Fixed const & ref2);
 
 		// GETTER / SETTER
 		int		getRawBits( void ) const;
