@@ -6,7 +6,7 @@
 /*   By: mochan <mochan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:40:20 by moninechan        #+#    #+#             */
-/*   Updated: 2023/03/25 20:37:04 by mochan           ###   ########.fr       */
+/*   Updated: 2023/03/25 20:57:08 by mochan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,13 @@ Fixed::Fixed(const Fixed& src)
 Fixed::Fixed(const int n)
 {
 	std::cout << GREEN << "Int constructor called" << D << "\n";
-	_fixedPointNumberValue = n * (1 << _fractionalBits);
+	Fixed::_fixedPointNumberValue = n * (1 << Fixed::_fractionalBits);
 }
 
 Fixed::Fixed(const float f)
 {
 	std::cout << GREEN << "Float constructor called" << D << "\n";
-	int	fractional_part;
-	Fixed::_fixedPointNumberValue = ((int) floor (f)) << Fixed::_fractionalBits; // calculate integer part of f and convert into fixed point
-	
-	if (f > 0)
-		fractional_part = (f - (long) f) * 256; // calculate fractional part (f > 0) and transform into fixed point
-	else if (f < 0)
-		fractional_part = -(f - (long) f) * 256; // calculate fractional part (f < 0) and transform into fixed point
-	else
-		fractional_part = 0;
-	if (fractional_part > 255)
-		Fixed::_fixedPointNumberValue += 0;
-	else
-		Fixed::_fixedPointNumberValue += fractional_part;
+	Fixed::_fixedPointNumberValue = f * (1 << Fixed::_fractionalBits) + (f >= 0 ? 0.5 : -0.5);
 }
 
 Fixed::~Fixed()
