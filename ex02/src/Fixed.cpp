@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochan <mochan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: moninechan <moninechan@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:40:20 by moninechan        #+#    #+#             */
-/*   Updated: 2023/03/25 23:58:19 by mochan           ###   ########.fr       */
+/*   Updated: 2023/03/26 10:35:05 by moninechan       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,32 @@
 //====CONSTRUCTORS================================================================================
 Fixed::Fixed()
 {
-	std::cout << GREEN << "Default constructor called" << D << "\n";
+	// std::cout << GREEN << "Default constructor called" << D << "\n";
 	this->_fixedPointNumberValue = 0;
 }
 
 Fixed::Fixed(const Fixed& src)
 {
-	std::cout << YELL << "Copy constructor called" << D << "\n";
+	// std::cout << YELL << "Copy constructor called" << D << "\n";
 	*this = src;
 }
 
 Fixed::Fixed(const int n)
 {
-	std::cout << GREEN << "Int constructor called" << D << "\n";
+	// std::cout << GREEN << "Int constructor called" << D << "\n";
 	Fixed::_fixedPointNumberValue = n * (1 << Fixed::_fractionalBits);
 }
 
 Fixed::Fixed(const float f)
 {
-	std::cout << GREEN << "Float constructor called" << D << "\n";
+	// std::cout << GREEN << "Float constructor called" << D << "\n";
 	Fixed::_fixedPointNumberValue = f * (1 << Fixed::_fractionalBits) + (f >= 0 ? 0.5 : -0.5);
 }
 
 //====DESTRUCTOR==================================================================================
 Fixed::~Fixed()
 {
-	std::cout << RED << "Destructor called" << D << "\n";
+	// std::cout << RED << "Destructor called" << D << "\n";
 }
 
 
@@ -60,7 +60,7 @@ void	Fixed::setRawBits( int const raw )
 //====OPERATOR OVERLOADS==========================================================================
 Fixed&	Fixed::operator=(const Fixed& src)
 {
-	std::cout << BLU << "Copy assignment operator called" << D << "\n";
+	// std::cout << BLU << "Copy assignment operator called" << D << "\n";
 	this->_fixedPointNumberValue = src._fixedPointNumberValue ;
 	return (*this);
 }
