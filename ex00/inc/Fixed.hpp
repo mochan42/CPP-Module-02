@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochan <mochan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: moninechan <moninechan@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:40:25 by moninechan        #+#    #+#             */
-/*   Updated: 2023/03/21 15:25:51 by mochan           ###   ########.fr       */
+/*   Updated: 2023/03/26 10:26:23 by moninechan       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class	Fixed
 {
 	public:
 		Fixed(); // Default constructor
-		Fixed(const Fixed& other); // Default copy constructor
+		Fixed(const Fixed& other); // Copy constructor
 		~Fixed(); // Destructor
 		Fixed&	operator=(const Fixed& src); // Copy assignment operator called
 		int		getRawBits( void ) const;
